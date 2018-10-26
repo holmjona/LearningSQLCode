@@ -24,44 +24,55 @@ namespace LearningSQLCode {
         }
 
         private void btnGetPeople_Click(object sender, RoutedEventArgs e) {
-            List<Person> lstPeople = new List<Person>();
-            SqlConnection conn = null;
-            try {
-                conn = new SqlConnection();
-                conn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\holmjona\source\repos\LearningSQLCode\LearningSQLCode\data\myData.mdf;Integrated Security=True";
-                //conn.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\holmjona\\source\\repos\\LearningSQLCode\\LearningSQLCode\\data\\myData.mdf;Integrated Security=True";
-                conn.Open();
-                //MessageBox.Show("i am in ");
-                SqlCommand comm
-                    = new SqlCommand("SELECT LastName, FirstName FROM People");
-                comm.Connection = conn;
-                SqlDataReader dr = comm.ExecuteReader();
-                while (dr.Read()) {
-                    Person p = new Person();
-                    p.FirstName = (string)dr["FirstName"];
-                    p.LastName = (string)dr["LastName"];
-                    lstPeople.Add(p);
-                }
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
-            } finally {
-                if (conn != null) conn.Close();
-            }
-
+            List<Person> lstPeople = DAL.GetPeople(); //GetPeopleFromDatabase();
 
             // GUI Code
             foreach (Person p in lstPeople) {
                 Label lbl = new Label();
-                lbl.Content = p.LastName + ", " + p.FirstName;
+                lbl.Content = p.LastName + ", " + p.FirstName + " : " + p.Phone;
                 stkPeople.Children.Add(lbl);
             }
         }
+
+        private void btnGetPerson_Click(object sender, RoutedEventArgs e) {
+            int pID = int.Parse(txtPersonID.Text);
+            Person p = DAL.GetPerson(pID);
+            MessageBox.Show(p.FirstName);
+        }
+
+        //private List<Person> GetPeopleFromDatabase() {
+        //    List<Person> lstPeople = new List<Person>();
+        //    SqlConnection conn = null;
+        //    try {
+        //        conn = new SqlConnection();
+        //        conn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\holmjona\source\repos\LearningSQLCode\LearningSQLCode\data\myData.mdf;Integrated Security=True";
+        //        //conn.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\holmjona\\source\\repos\\LearningSQLCode\\LearningSQLCode\\data\\myData.mdf;Integrated Security=True";
+        //        conn.Open();
+        //        //MessageBox.Show("i am in ");
+        //        SqlCommand comm
+        //            = new SqlCommand("SELECT LastName, FirstName FROM People");
+        //        comm.Connection = conn;
+        //        SqlDataReader dr = comm.ExecuteReader();
+        //        while (dr.Read()) {
+        //            Person p = new Person();
+        //            p.FirstName = (string)dr["FirstName"];
+        //            p.LastName = (string)dr["LastName"];
+        //            lstPeople.Add(p);
+        //        }
+        //    } catch (Exception ex) {
+        //        MessageBox.Show(ex.Message);
+        //    } finally {
+        //        if (conn != null) conn.Close();
+        //    }
+        //    return lstPeople;
+        //}
         //Person p = new Person();
         //p.SetID(1); // Mutator
         //int id = p.GetID(); // Accessor
 
         //p.ID = 1; // Properties instead of Accessor and Mutators
         //int idd = p.ID;
+
 
     }
 
