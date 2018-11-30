@@ -21,10 +21,17 @@ namespace LearningSQLCode {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+
+            Project p = SprocDAL.GetProject(1);
+
+            MessageBox.Show(p.ProjectTypeID.ToString());
+            MessageBox.Show(p.ProjectType.Name);
+
         }
 
         private void btnGetPeople_Click(object sender, RoutedEventArgs e) {
-            List<Person> lstPeople = DAL.GetPeople(); //GetPeopleFromDatabase();
+            //List<Person> lstPeople = DAL.GetPeople(); //GetPeopleFromDatabase();
+            List<Person> lstPeople = SprocDAL.GetPeople(); 
 
             // GUI Code
             foreach (Person p in lstPeople) {
@@ -36,8 +43,13 @@ namespace LearningSQLCode {
 
         private void btnGetPerson_Click(object sender, RoutedEventArgs e) {
             int pID = int.Parse(txtPersonID.Text);
-            Person p = DAL.GetPerson(pID);
+            Person p = SprocDAL.GetPerson(pID);
             MessageBox.Show(p.FirstName);
+        }
+
+        private void BtnAddNew_Click(object sender, RoutedEventArgs e) {
+            frmPerson frm = new frmPerson();
+            frm.ShowDialog();
         }
 
         //private List<Person> GetPeopleFromDatabase() {

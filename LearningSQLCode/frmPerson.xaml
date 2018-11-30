@@ -1,0 +1,51 @@
+﻿<Window x:Class="LearningSQLCode.frmPerson"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LearningSQLCode"
+        mc:Ignorable="d"
+        Title="Person Form" Height="450" Width="350">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="113*" />
+            <ColumnDefinition Width="247*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Prefix</Label>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Given Name</Label>
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">SurName</Label>
+        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Postfix</Label>
+        <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Birth Date</Label>
+        <Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Phone</Label>
+        <Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Email</Label>
+        <Label Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Home Page</Label>
+        <Label Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Is A Manager</Label>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtPreFix" ></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtFirstName" ></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtLastName" ></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtPostFix" ></TextBox>
+        <DatePicker Grid.Row="4" Grid.Column="1" x:Name="dpDateOfBirth"></DatePicker>
+        <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtPhone" ></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="1" x:Name="txtEmail" ></TextBox>
+        <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtHomePage" ></TextBox>
+        <CheckBox Grid.Row="8" Grid.Column="1" x:Name="chkIsManager" ></CheckBox>
+
+        <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Width="220">
+            <Button Width="100" x:Name="btnSave" Margin="5" Click="btnSave_Click">Add</Button>
+            <Button Width="100" x:Name="btnCancel" Margin="5">Cancel</Button>
+
+        </StackPanel>
+    </Grid>
+</Window>

@@ -44,11 +44,11 @@ namespace LearningSQLCode {
                     p.LastName = (string)dr["LastName"];
                     p.DateOfBirth = (DateTime)dr["DateOfBirth"];
                     p.Email = (String)dr["Email"];
-                    p.HomePage = (String)dr["HomePage"];
+                    p.Homepage = (String)dr["HomePage"];
                     p.IsManager = (bool)dr["IsManager"];
                     p.Phone = (String)dr["Phone"];
-                    p.PostFix = (String)dr["PostFix"];
-                    p.PreFix = (String)dr["PreFix"];
+                    p.Postfix = (String)dr["PostFix"];
+                    p.Prefix = (String)dr["PreFix"];
                     lstPeople.Add(p);
                 }
             } catch (Exception ex) {
@@ -79,11 +79,11 @@ namespace LearningSQLCode {
                     retPerson.LastName = (string)dr["LastName"];
                     retPerson.DateOfBirth = (DateTime)dr["DateOfBirth"];
                     retPerson.Email = (String)dr["Email"];
-                    retPerson.HomePage = (String)dr["HomePage"];
+                    retPerson.Homepage = (String)dr["HomePage"];
                     retPerson.IsManager = (bool)dr["IsManager"];
                     retPerson.Phone = (String)dr["Phone"];
-                    retPerson.PostFix = (String)dr["PostFix"];
-                    retPerson.PreFix = (String)dr["PreFix"];
+                    retPerson.Postfix = (String)dr["PostFix"];
+                    retPerson.Prefix = (String)dr["PreFix"];
                 }
             }catch (Exception ex) {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
